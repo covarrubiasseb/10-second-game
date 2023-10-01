@@ -1,4 +1,4 @@
-function newProblem() {
+function generateProblem() {
 
   let a = Math.floor(Math.random() * 99);
   let b = Math.floor(Math.random() * 99);
@@ -7,16 +7,26 @@ function newProblem() {
 
 }
 
+function displayProblem(values) {
+
+  $(".math-problem").text(String(values[0] + " + " + values[1]));
+
+}
+
 $(document).ready( () => {
-  
+
+  // Start Game
   $(".new-game-button").on("click", () => {
 
+    // Clear Score
+    $(".current-score").text(0);
+
     // Generate First Math Problem
-    let values = newProblem();  
+    let values = generateProblem();  
     let answer = values[0] + values[1];
 
     // Display New Problem in DOM
-    $(".math-problem").text(String(values[0] + " + " + values[1]));
+    displayProblem(values);
 
     // On user input, check if it's correct
     // If it is correct, increment the current score and
@@ -35,12 +45,16 @@ $(document).ready( () => {
           $(".current-score").text(Number(currentScore) + 1) :
           $(".current-score").text(0);
 
+        // Generate a new problem
+        values = generateProblem();
+        answer = values[0] + values[1];
+
+        // Display New Problem in DOM
+        displayProblem(values);
+
       }
 
     });
-
-
-    // Start Timer
 
   });
 
