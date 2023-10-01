@@ -42,43 +42,6 @@ $(document).ready( () => {
 
     answer = startGame();
 
-    // // On user input, check if it's correct
-    // // If it is correct, increment the current score and
-    // // generate a new math problem
-    // $(".math-answer-attempt").on("change", (event) => {
-
-    //   if (!gameStarted) {
-
-    //     gameStarted = true;
-
-    //     startGame();
-
-
-    //   }
-
-    //   let answerAttempt = Number($(".math-answer-attempt").val());
-
-    //   // Answer is correct
-    //   if (answerAttempt === answer) {
-
-    //     let currentScore = $(".current-score").text();
-
-    //     // Increment and display score
-    //     currentScore ? 
-    //       $(".current-score").text(Number(currentScore) + 1) :
-    //       $(".current-score").text(0);
-
-    //     // Generate a new problem
-    //     values = generateProblem();
-    //     answer = values[0] + values[1];
-
-    //     // Display New Problem in DOM
-    //     displayProblem(values);
-
-    //   }
-
-    // });
-
   });
 
   // On user input, check if it's correct
@@ -113,6 +76,8 @@ $(document).ready( () => {
       // Display New Problem in DOM
       displayProblem(values);
 
+      // Clear Answer Input Element
+      $(".math-answer-attempt").val("")
     }
 
   });
