@@ -18,6 +18,7 @@ function displayProblem(values) {
 function startGame() {
 
   // Clear Score
+  $(".final-score").text("");
   $(".current-score").text(0);
 
   // Generate First Math Problem
@@ -26,6 +27,42 @@ function startGame() {
 
   // Display New Problem in DOM
   displayProblem(values);
+
+  let startTime = new Date().getTime();
+
+  let count = 0;
+
+  $(".time-remaining").text("10s Remaining");
+
+  // Start Timer
+  let newTimer = setInterval(() => {
+
+    count++;
+
+    let timeLeft = (10 - count);
+
+    $(".time-remaining").text(timeLeft + "s Remaining");
+
+    // Game Over
+    if (count >= 10) {
+
+      clearInterval(newTimer);
+
+      let finalScore = Number($(".current-score").text());
+
+      // Reset Current Score
+      $(".current-score").text(0);
+
+      // Display Final Score
+      $(".final-score").text("Final Score: " + finalScore);
+
+      // Remove Problem
+      $(".math-problem").text("");
+
+      gameStarted = false;
+    } 
+
+  }, 1000);
 
   return answer;
 
