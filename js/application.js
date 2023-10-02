@@ -4,6 +4,8 @@ let timeSpent = 0;
 
 let timer;
 
+let highScore = 0;
+
 function generateProblem() {
 
   let a = Math.floor(Math.random() * 99);
@@ -62,6 +64,12 @@ function startGame() {
       clearInterval(timer);
 
       let finalScore = Number($(".current-score").text());
+
+      // Update High Score
+      if (finalScore > highScore) {
+        $(".high-score").text(finalScore);
+        highScore = finalScore;
+      }
 
       // Reset Current Score
       $(".current-score").text("");
