@@ -1,0 +1,26 @@
+.row {
+  margin-bottom: 10px;
+}
+
+.math-problem {
+  font-size: 20px;
+  padding: 10px;
+}
+
+.math-problem-border {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.current-score-display {
+  font-size: 20px;
+}
+
+.final-score {
+  font-size: 20px;
+}
+
+.footnote {
+  font-size: 16px;
+}

@@ -37,6 +37,9 @@ function startGame() {
 
   // Display New Problem in DOM
   displayProblem(values);
+  $(".math-problem").addClass("math-problem-border");
+
+  $(".current-score-message").text("Current Score: ");
 
   let startTime = new Date().getTime();
 
@@ -61,13 +64,19 @@ function startGame() {
       let finalScore = Number($(".current-score").text());
 
       // Reset Current Score
-      $(".current-score").text(0);
+      $(".current-score").text("");
+      $(".current-score-message").text("");
 
       // Display Final Score
       $(".final-score").text("Final Score: " + finalScore);
 
       // Remove Problem
       $(".math-problem").text("");
+
+      $(".math-problem").removeClass("math-problem-border");
+
+      // Hide Time Display
+      $(".time-remaining").text("");
 
       gameStarted = false;
     } 
