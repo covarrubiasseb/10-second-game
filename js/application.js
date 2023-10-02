@@ -1,5 +1,9 @@
 let gameStarted = false;
 
+let timeSpent = 0;
+
+let timer;
+
 function generateProblem() {
 
   let a = Math.floor(Math.random() * 99);
@@ -21,6 +25,12 @@ function startGame() {
   $(".final-score").text("");
   $(".current-score").text(0);
 
+  // Clear Input
+  $(".math-answer-attempt").val("");
+
+  // Clear Timer
+  clearInterval(timer);
+
   // Generate First Math Problem
   let values = generateProblem();  
   let answer = values[0] + values[1];
@@ -30,23 +40,23 @@ function startGame() {
 
   let startTime = new Date().getTime();
 
-  let count = 0;
+  timeSpent = 0;
 
   $(".time-remaining").text("10s Remaining");
 
   // Start Timer
-  let newTimer = setInterval(() => {
+  timer = setInterval(() => {
 
-    count++;
+    timeSpent++;
 
-    let timeLeft = (10 - count);
+    let timeLeft = (10 - timeSpent);
 
     $(".time-remaining").text(timeLeft + "s Remaining");
 
     // Game Over
-    if (count >= 10) {
+    if (timeSpent >= 10) {
 
-      clearInterval(newTimer);
+      clearInterval(timer);
 
       let finalScore = Number($(".current-score").text());
 
@@ -98,6 +108,9 @@ $(document).ready( () => {
 
     // Answer is correct
     if (answerAttempt === answer) {
+
+      // Give player 1 more second of time
+      timeSpent-=2; 
 
       let currentScore = $(".current-score").text();
 
